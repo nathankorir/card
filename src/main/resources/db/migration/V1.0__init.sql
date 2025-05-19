@@ -16,3 +16,8 @@ CREATE TABLE card
 
 -- Enforce one card per type per account
 CREATE UNIQUE INDEX IF NOT EXISTS idx_unique_active_card_per_type ON card(account_id, type) WHERE voided = FALSE;
+
+-- Index searchable fields
+CREATE INDEX idx_card_alias ON card (alias);
+CREATE INDEX idx_card_type ON card (type);
+CREATE INDEX idx_card_pan ON card (pan);
